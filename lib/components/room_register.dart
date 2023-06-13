@@ -8,23 +8,6 @@ class RoomRegister extends StatefulWidget {
 }
 
 class _RoomRegisterState extends State<RoomRegister> {
-  bool _showModal = false;
-
-  void _toggleModal() {
-    setState(() {
-      _showModal = !_showModal;
-    });
-  }
-
-  void _selectDate() {
-    showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2025),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,77 +103,94 @@ class _RoomRegisterState extends State<RoomRegister> {
       ),
       body: Container(
         color: Colors.lightBlue[100],
-        child: Align(
-          alignment: Alignment.center,
-          child: Container(
-            constraints: BoxConstraints(
-              maxWidth: 400.0,
-              maxHeight: 600.0,
-            ),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10.0),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.3),
-                  blurRadius: 10,
-                  offset: const Offset(0, 3),
+        child: Stack(
+          children: [
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                constraints: const BoxConstraints(
+                  maxWidth: 400.0,
+                  maxHeight: 400.0,
                 ),
-              ],
-            ),
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Descrição',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                SizedBox(height: 20.0),
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Valor',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                SizedBox(height: 20.0),
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Desconto',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                SizedBox(height: 20.0),
-                TextFormField(
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                    labelText: 'URL da imagem do quarto',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                SizedBox(height: 20.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        // Ação ao cadastrar
-                      },
-                      child: Text('Cadastrar'),
-                    ),
-                    SizedBox(width: 20.0),
-                    ElevatedButton(
-                      onPressed: () {
-                        // Ação ao cadastrar
-                      },
-                      child: Text('Cancelar'),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      blurRadius: 10,
+                      offset: const Offset(0, 3),
                     ),
                   ],
-                )
-              ],
+                ),
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    TextField(
+                      decoration: InputDecoration(
+                        labelText: 'Descrição',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    const SizedBox(height: 20.0),
+                    TextField(
+                      decoration: InputDecoration(
+                        labelText: 'Valor',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    const SizedBox(height: 20.0),
+                    TextField(
+                      decoration: InputDecoration(
+                        labelText: 'Desconto',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    const SizedBox(height: 20.0),
+                    TextFormField(
+                      maxLines: 3,
+                      decoration: InputDecoration(
+                        labelText: 'URL da imagem do quarto',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    const SizedBox(height: 20.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            // Ação ao cadastrar
+                          },
+                          child: const Text('Cadastrar'),
+                        ),
+                        const SizedBox(width: 20.0),
+                        ElevatedButton(
+                          onPressed: () {
+                            // Ação ao cadastrar
+                          },
+                          child: const Text('Cancelar'),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
             ),
-          ),
+            Align(
+              alignment: Alignment.topCenter,
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(
+                  'Cadastro de Quarto',
+                  style: TextStyle(
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
